@@ -107,7 +107,9 @@ public class Hub {
         return count;
     }
 
-    public static String checkContainersByWeightAndHub(double weight, int hubNum) {
+
+
+    public static String checkContainers(int weight, int hubNum) {
         String s = "";
         for (int i = 0; i < 12; i++) {
             if (cont[hubNum][i] != null && cont[hubNum][i].getWeight() <= weight) {
@@ -121,7 +123,6 @@ public class Hub {
         }
         return s;
     }
-
 
 
 }

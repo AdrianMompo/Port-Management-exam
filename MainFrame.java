@@ -7,7 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-    public class MainFrame extends JFrame{
+import static PaqIAdrian.Hub.checkContainers;
+
+public class MainFrame extends JFrame{
         private JTextField id;
         private JComboBox country;
         private JTextField weight;
@@ -30,8 +32,10 @@ import java.util.Objects;
         private JLabel numberPerCountry;
         private JTextPane textPane1;
         private JFormattedTextField Textfield;
+        private JButton checkButton;
+        private JComboBox HubBox;
 
-        public boolean Missing() {
+    public boolean Missing() {
             return id.getText().isEmpty() || weight.getText().isEmpty() || sender.getText().isEmpty() || desc.getText().isEmpty() || reciever.getText().isEmpty() || (!p1.isSelected() && !p2.isSelected() && !p3.isSelected());
         }
 
@@ -98,7 +102,25 @@ import java.util.Objects;
                     numberPerCountry.setText(String.valueOf(Hub.contNumber(Objects.requireNonNull(country2.getSelectedItem()).toString())));
                 }
             });
-        }
+
+            checkButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                            // get the weight and hub number from the text fields and combo box
+
+                            int hubNumber = (int) HubBox.getSelectedItem();
+                            int w = Integer.parseInt(weight.getText());
+                            String s ="";
+
+                            // call the checkContainersByWeightAndHub method
+                            checkContainers(w, hubNumber);
+
+                            // display the result in a dialog box
+                            JOptionPane.showMessageDialog(MainFrame.this, s);
+                        }}
+                    );
+
+
+            };
 
         public static void main(String[] args) {
             MainFrame myFrame = new MainFrame();

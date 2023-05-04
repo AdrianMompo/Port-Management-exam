@@ -86,6 +86,8 @@ public class Container {
         this.inspected = inspected;
     }
 
+
+
     public String toString() {
         return "Container: {" + id +
                 "\n- Weight: " + weight +
